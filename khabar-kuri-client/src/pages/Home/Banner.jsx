@@ -13,7 +13,7 @@ const Banner = () => {
       infiniteLoop={true}
       interval={3000}
       transitionTime={1000} 
-      showThumbs={false}
+    //   showThumbs={false}
       showStatus={false}
     >
       <div>
