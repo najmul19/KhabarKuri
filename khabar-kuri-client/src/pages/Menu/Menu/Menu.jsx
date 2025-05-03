@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import Cover from "../../Shared/Cover/Cover";
 import menuImg from '../../../assets/menu/menu-bg.png'
-import PopularMenue from "../../Home/PopularMenue/PopularMenue";
+
 const Menu = () => {
   return (
     <div>
@@ -14,18 +14,8 @@ const Menu = () => {
       img={menuImg}
       title="Our Menu"
       ></Cover>
-      <PopularMenue></PopularMenue>
-      <Cover
-      img={menuImg}
-      title="Our Menu"
-      ></Cover>
-      <PopularMenue></PopularMenue>
-      <Cover
-      img={menuImg}
-      title="Our Menu"
-      ></Cover>
-      <PopularMenue></PopularMenue>
-    </div>
+      
+      </div>
   );
 };
 
