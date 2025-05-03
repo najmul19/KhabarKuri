@@ -3,16 +3,20 @@ import orderCover from "../../../assets/shop/banner2.jpg";
 import Cover from "../../Shared/Cover/Cover";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import { useMemo, useState } from "react";
+import {  useState } from "react";
 import useMenu from "../../../Hooks/useMenu";
+import OrderTab from "../OrderTab/OrderTab";
+import { useParams } from "react-router-dom";
 const Order = () => {
   const [tabIndex, setTabIndex] = useState(0);
   const [menu] = useMenu();
+  const {category} = useParams()
+  console.log(category)
   const dessert = menu.filter((item) => item.category == "dessert");
   const soup = menu.filter((item) => item.category == "soup");
   const salad = menu.filter((item) => item.category == "salad");
   const pizza = menu.filter((item) => item.category == "pizza");
-  const offered = menu.filter((item) => item.category == "offered");
+  const drinks = menu.filter((item) => item.category == "drinks");
   return (
     <div>
       <Helmet>
@@ -27,11 +31,32 @@ const Order = () => {
           <Tab>Dessert</Tab>
           <Tab>Drinks</Tab>
         </TabList>
-        <TabPanel></TabPanel>
-        <TabPanel></TabPanel>
-        <TabPanel></TabPanel>
-        <TabPanel></TabPanel>
-        <TabPanel></TabPanel>
+        <TabPanel>
+           
+            <OrderTab
+            items={salad}
+            ></OrderTab>
+        </TabPanel>
+        <TabPanel>
+        <OrderTab
+            items={pizza}
+            ></OrderTab>
+        </TabPanel>
+        <TabPanel>
+        <OrderTab
+            items={soup}
+            ></OrderTab>
+        </TabPanel>
+        <TabPanel>
+        <OrderTab
+            items={dessert}
+            ></OrderTab>
+        </TabPanel>
+        <TabPanel>
+        <OrderTab
+            items={drinks}
+            ></OrderTab>
+        </TabPanel>
       </Tabs>
     </div>
   );
