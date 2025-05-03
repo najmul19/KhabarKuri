@@ -64,9 +64,9 @@ const Footer = () => {
       </div>
       <div className=" text-center bg-base-300 text-base-content p-4">
           <div>
-            <p>
+            <>
             <p>© {new Date().getFullYear()} KhabarKuri. All rights reserved.</p>
-            </p>
+            </>
           </div>
         </div>
     </footer>
