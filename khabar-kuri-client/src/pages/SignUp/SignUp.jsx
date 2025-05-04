@@ -13,11 +13,10 @@ const SignUp = () => {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    createUser(data.email,data.password)
-    .then(res=>{
-        const loggedUser = res.user;
-        console.log(loggedUser)
-    })
+    createUser(data.email, data.password).then((res) => {
+      const loggedUser = res.user;
+      console.log(loggedUser);
+    });
   };
 
   //   console.log(watch("example"));
@@ -25,7 +24,7 @@ const SignUp = () => {
   return (
     <>
       <Helmet>
-        <title>KhabarKuri | SignUP</title>
+        <title>KhabarKuri | SignUp</title>
       </Helmet>
       ;
       <div className="hero bg-base-200 min-h-screen">
@@ -125,6 +124,11 @@ const SignUp = () => {
                 />
               </div>
             </form>
+            <p>
+              <small>
+                Already Have An Account ? <Link to="/login">Login</Link>
+              </small>
+            </p>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
+import Swal from 'sweetalert2'
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
@@ -11,7 +12,7 @@ import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
-  const captchaRef = useRef(null);
+//   const captchaRef = useRef(null);
   const [disabled, setDesabled] = useState(true);
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -26,13 +27,19 @@ const Login = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
+        Swal.fire({
+            title: "User Login Successful!",
+            icon: "success",
+            draggable: true
+          });
       })
       .catch((e) => {
-        console.log(e.message);
+        console.log(e);
       });
   };
-  const handleValidateCaptcha = () => {
-    const userCaptchaValue = captchaRef.current.value;
+  const handleValidateCaptcha = (e) => {
+    // const userCaptchaValue = captchaRef.current.value;
+    const userCaptchaValue = e.target.value;
     console.log(userCaptchaValue);
     if (validateCaptcha(userCaptchaValue)) {
       setDesabled(false);
@@ -93,19 +100,20 @@ const Login = () => {
                   <LoadCanvasTemplate />
                 </label>
                 <input
-                  ref={captchaRef}
+                onBlur={handleValidateCaptcha}
+                //   ref={captchaRef}
                   name="captcha"
                   type="text"
                   placeholder="type the captcha above"
                   className="input w-full input-bordered"
                   required
                 />
-                <button
-                  onClick={handleValidateCaptcha}
+                {/* <button
+                  
                   className="btn btn-outline btn-xs w-full"
                 >
                   Validate
-                </button>
+                </button> */}
               </div>
               <div className="form-control mt-6">
                 <input
