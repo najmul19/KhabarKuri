@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
 
 const NavBar = () => {
-  const { user,logOut } = useContext(AuthContext);
-  const handleLogOut=()=>{
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
     logOut()
-    .then(()=>{
-console.log("LogOut Successfully!")
-    })
-    .catch(error=>{
-      console.log(error.message)
-    })
-  }
+      .then(() => {
+        console.log("LogOut Successfully!");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   const Links = (
     <>
       <li>
@@ -24,10 +24,18 @@ console.log("LogOut Successfully!")
       <li>
         <Link to="/order/salad">Order Food</Link>
       </li>
+      <li>
+        <Link to="/secret">Secret</Link>
+      </li>
 
       {user ? (
         <>
-        <button onClick={handleLogOut} className="btn btn-ghost btn-sm text-sm uppercase">LogOut</button>
+          <button
+            onClick={handleLogOut}
+            className="btn btn-ghost btn-sm text-sm uppercase"
+          >
+            LogOut
+          </button>
         </>
       ) : (
         <>

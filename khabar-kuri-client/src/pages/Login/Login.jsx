@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
@@ -7,12 +7,15 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { AuthContext } from "../../Providers/AuthProviders";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
-//   const captchaRef = useRef(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || '/'
+  //   const captchaRef = useRef(null);
   const [disabled, setDesabled] = useState(true);
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -28,10 +31,11 @@ const Login = () => {
         const user = res.user;
         console.log(user);
         Swal.fire({
-            title: "User Login Successful!",
-            icon: "success",
-            draggable: true
-          });
+          title: "User Login Successful!",
+          icon: "success",
+          draggable: true,
+        });
+        navigate(from, {replace: true})
       })
       .catch((e) => {
         console.log(e);
@@ -100,8 +104,8 @@ const Login = () => {
                   <LoadCanvasTemplate />
                 </label>
                 <input
-                onBlur={handleValidateCaptcha}
-                //   ref={captchaRef}
+                  onBlur={handleValidateCaptcha}
+                  //   ref={captchaRef}
                   name="captcha"
                   type="text"
                   placeholder="type the captcha above"
