@@ -168,7 +168,7 @@ const SignUp = () => {
                 />
               </div>
             </form>
-            <p>
+            <p className="px-6">
               <small>
                 Already Have An Account ? <Link to="/login">Login</Link>
               </small>

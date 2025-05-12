@@ -9,12 +9,13 @@ import {
 import { AuthContext } from "../../Providers/AuthProviders";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location?.state?.from?.pathname || '/'
+  const from = location?.state?.from?.pathname || "/";
   //   const captchaRef = useRef(null);
   const [disabled, setDesabled] = useState(true);
   useEffect(() => {
@@ -35,7 +36,7 @@ const Login = () => {
           icon: "success",
           draggable: true,
         });
-        navigate(from, {replace: true})
+        navigate(from, { replace: true });
       })
       .catch((e) => {
         console.log(e);
@@ -128,11 +129,12 @@ const Login = () => {
                 />
               </div>
             </form>
-            <p>
+            <p className="px-6">
               <small>
                 New Here? <Link to="/signup">Create a New Account</Link>
               </small>
             </p>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>
