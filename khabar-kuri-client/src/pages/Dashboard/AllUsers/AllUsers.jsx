@@ -38,7 +38,29 @@ const AllUsers = () => {
     });
   };
   const handleMakeAdmin = (user) => {
-    
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Make Admin!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
+          console.log(res.data);
+          if (res.data.modifiedCount) {
+            refetch();
+            Swal.fire({
+              title: "Make Admin",
+              text: `${user.name} is an admin now!`,
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
   };
  
   return (
@@ -67,12 +89,13 @@ const AllUsers = () => {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>
-                  <button
+                  {
+                    user.role==='admin'?"Admin":<button
                     onClick={() => handleMakeAdmin(user)}
                     className="btn bg-orange-500 btn-lg"
                   >
                     <FaUsers className="text-white text-2xl "></FaUsers>
-                  </button>
+                  </button>}
                 </td>
                 <td>
                   <button
