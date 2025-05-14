@@ -5,14 +5,18 @@ import Swal from "sweetalert2";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: users = [] , refetch} = useQuery({
+  const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/users", {
-        headers: { //5/14/2025
-            authorization: `Bearer ${localStorage.getItem('access-token')}`
-        }
-      });
+      const res = await axiosSecure.get(
+        "/users"
+        //   , {
+        //   headers: {
+        //     //5/14/2025
+        //     authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        //   },
+        // }
+      );
       return res.data;
     },
   });
@@ -66,7 +70,7 @@ const AllUsers = () => {
       }
     });
   };
- 
+
   return (
     <div>
       <div className="flex justify-evenly my-4">
@@ -93,13 +97,16 @@ const AllUsers = () => {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>
-                  {
-                    user.role==='admin'?"Admin":<button
-                    onClick={() => handleMakeAdmin(user)}
-                    className="btn bg-orange-500 btn-lg"
-                  >
-                    <FaUsers className="text-white text-2xl "></FaUsers>
-                  </button>}
+                  {user.role === "admin" ? (
+                    "Admin"
+                  ) : (
+                    <button
+                      onClick={() => handleMakeAdmin(user)}
+                      className="btn bg-orange-500 btn-lg"
+                    >
+                      <FaUsers className="text-white text-2xl "></FaUsers>
+                    </button>
+                  )}
                 </td>
                 <td>
                   <button
