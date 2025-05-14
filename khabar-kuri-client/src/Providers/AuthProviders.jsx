@@ -66,7 +66,7 @@ const AuthProviders = ({ children }) => {
       setLoading(false);
     });
     return () => unSubscribe();
-  }, []);
+  }, [axiosPublic]); //5/15/2025
   const authInfo = {
     user,
     loading,
