@@ -1,6 +1,9 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { useState } from "react";
 
 const CheckOutForm = () => {
+  const [error, setError] = useState();
+
   const stripe = useStripe();
   const elements = useElements();
   const handleSubmit = async (event) => {
@@ -18,7 +21,9 @@ const CheckOutForm = () => {
     });
     if (error) {
       console.log("payment error", error);
+      setError(error.message);
     } else {
+      setError("");
       console.log("Payment method", paymentMethod);
     }
   };
@@ -47,6 +52,7 @@ const CheckOutForm = () => {
       >
         Pay
       </button>
+      <p className="text-rose-600">{error}</p>
     </form>
   );
 };
