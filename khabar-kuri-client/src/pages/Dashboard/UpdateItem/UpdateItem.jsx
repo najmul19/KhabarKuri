@@ -9,12 +9,11 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const UpdateItem = () => {
-  const id = useParams();
-  console.log(id)
+ 
   const { register, handleSubmit, reset } = useForm();
   const { name, category, recipe, price, _id } = useLoaderData();
 
-  console.log(name, category, price);
+  // console.log(name, category, price);
 
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
@@ -39,9 +38,9 @@ const UpdateItem = () => {
       //
       const menuRes = await axiosSecure.patch(`/menu/${_id}`, menuItem);
       console.log(menuRes.data);
-      if (menuRes.data.insertedId) {
+      if (menuRes.data.modifiedCount) {
         // show success popUp
-        reset();
+        // reset();
         Swal.fire({
           position: "top-end",
           icon: "success",
