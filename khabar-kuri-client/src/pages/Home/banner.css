@@ -1,0 +1,131 @@
+/* banner.css */
+.banner-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    max-height: 800px;
+    overflow: hidden;
+}
+
+.banner-carousel {
+    height: 100%;
+}
+
+.banner-slide {
+    position: relative;
+    height: 100%;
+}
+
+.banner-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-content {
+    text-align: center;
+    max-width: 800px;
+    padding: 0 2rem;
+    animation: fadeInUp 1s ease;
+}
+
+.banner-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.banner-subtitle {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.carousel .slide {
+    background: transparent;
+}
+
+.carousel .control-dots {
+    bottom: 30px;
+}
+
+.carousel .control-dots .dot {
+    width: 12px;
+    height: 12px;
+    margin: 0 8px;
+    background: white;
+    opacity: 0.6;
+    box-shadow: none;
+}
+
+.carousel .control-dots .dot.selected {
+    opacity: 1;
+    background: #0C6C84;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1024px) {
+    .banner-title {
+        font-size: 3rem;
+    }
+
+    .banner-subtitle {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner-container {
+        height: 80vh;
+    }
+
+    .banner-title {
+        font-size: 2.5rem;
+    }
+
+    .banner-subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-container {
+        height: 70vh;
+    }
+
+    .banner-title {
+        font-size: 2rem;
+    }
+
+    .carousel .control-dots {
+        bottom: 20px;
+    }
+}
