@@ -1,40 +1,74 @@
+// Testimonials.js
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FaQuoteLeft } from "react-icons/fa";
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { useEffect, useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
-const Testimoniasls = () => {
-  const [reviws, setReviws] = useState([]);
+import "./testimonials.css";
+
+const Testimonials = () => {
+  const [reviews, setReviews] = useState([]);
+  
   useEffect(() => {
     fetch("http://localhost:5000/reviews")
       .then((res) => res.json())
-      .then((data) => setReviws(data));
+      .then((data) => setReviews(data));
   }, []);
+
   return (
-    <section className="my-20">
+    <section className="testimonials-section">
       <SectionTitle
-        subHeading="What Our CLient Say"
+        subHeading="What Our Clients Say"
         heading="Testimonials"
-      ></SectionTitle>
-      <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-        {reviws.map((reviw) => (
-          <SwiperSlide key={reviw._id}>
-            <div className="my-8 mx-24  flex flex-col items-center ">
-              <Rating style={{ maxWidth: 180 }} value={reviw.rating} readOnly />
-              <FaQuoteLeft className="mt-5 text-5xl"></FaQuoteLeft>
-              <p className="py-4">{reviw.details}</p>
-              <h3 className="text-2xl text-orange-400">{reviw.name}</h3>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      />
+      
+      <div className="testimonials-container">
+        <Swiper
+          navigation={true}
+          modules={[Navigation]}
+          className="testimonials-swiper"
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+          }}
+        >
+          {reviews.map((review) => (
+            <SwiperSlide key={review._id}>
+              <div className="testimonial-card">
+                <div className="testimonial-rating">
+                  <Rating 
+                    style={{ maxWidth: 120 }} 
+                    value={review.rating} 
+                    readOnly 
+                  />
+                </div>
+                <div className="testimonial-quote">
+                  <FaQuoteLeft className="quote-icon" />
+                </div>
+                <p className="testimonial-text">{review.details}</p>
+                <div className="testimonial-author">
+                  <h4>{review.name}</h4>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </section>
   );
 };
 
-export default Testimoniasls;
+export default Testimonials;

@@ -1,3 +1,4 @@
+// Category.js
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -8,60 +9,63 @@ import slide3 from "../../../assets/home/slide3.jpg";
 import slide4 from "../../../assets/home/slide4.jpg";
 import slide5 from "../../../assets/home/slide5.jpg";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import "./category.css";
 
 const Category = () => {
   return (
-    <section>
+    <section className="category-section">
       <SectionTitle
         heading={"Order Online"}
         subHeading={"From 11.00am to 10.00pm"}
       />
 
-      <Swiper
-        slidesPerView={4}
-        spaceBetween={30}
-        centeredSlides={true}
-        pagination={{ clickable: true }}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        speed={1200}
-        loop={true}
-        modules={[Autoplay, Pagination]}
-        className="mySwiper mb-24"
-      >
-        <SwiperSlide>
-          <img src={slide1} alt="" />
-          <h3 className="text-3xl uppercase text-center -mt-16 text-white">
-            Salad
-          </h3>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={slide2} alt="" />
-          <h3 className="text-3xl uppercase text-center -mt-16 text-white">
-            Pizza
-          </h3>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={slide3} alt="" />
-          <h3 className="text-3xl uppercase text-center -mt-16 text-white">
-            Soups
-          </h3>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={slide4} alt="" />
-          <h3 className="text-3xl uppercase text-center -mt-16 text-white">
-            Desserts
-          </h3>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={slide5} alt="" />
-          <h3 className="text-3xl uppercase text-center -mt-16 text-white">
-            Salad
-          </h3>
-        </SwiperSlide>
-      </Swiper>
+      <div className="category-slider-container">
+        <Swiper
+          slidesPerView={4}
+          spaceBetween={30}
+          centeredSlides={true}
+          pagination={{ clickable: true }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          speed={1200}
+          loop={true}
+          modules={[Autoplay, Pagination]}
+          className="category-swiper"
+        >
+          <SwiperSlide>
+            <div className="slide-content">
+              <img src={slide1} alt="Salad" className="slide-image" />
+              <h3 className="slide-title">Salad</h3>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="slide-content">
+              <img src={slide2} alt="Pizza" className="slide-image" />
+              <h3 className="slide-title">Pizza</h3>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="slide-content">
+              <img src={slide3} alt="Soups" className="slide-image" />
+              <h3 className="slide-title">Soups</h3>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="slide-content">
+              <img src={slide4} alt="Desserts" className="slide-image" />
+              <h3 className="slide-title">Desserts</h3>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="slide-content">
+              <img src={slide5} alt="Salad" className="slide-image" />
+              <h3 className="slide-title">Salad</h3>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </div>
     </section>
   );
 };

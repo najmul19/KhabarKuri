@@ -1,7 +1,7 @@
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import MenuItem from "../../Shared/MenuItem/MenuItem";
 import useMenu from "../../../Hooks/useMenu";
-
+import "./popular.css";
 const PopularMenue = () => {
   // const [menue,setMenue] = useState([])
   // useEffect(()=>{
@@ -26,9 +26,11 @@ const PopularMenue = () => {
           <MenuItem key={item._id} item={item}></MenuItem>
         ))}
       </div>
-      <button className="btn btn-outline uppercase border-0 border-b-4 mt-4">
-        View Full Menu
-      </button>
+      <div className="view-more-container">
+        <button className="view-more-button">
+          View Full Menu
+        </button>
+      </div>
     </section>
   );
 };
