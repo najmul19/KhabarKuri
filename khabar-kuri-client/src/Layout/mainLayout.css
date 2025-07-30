@@ -1,0 +1,56 @@
+:root {
+  /* Light mode defaults */
+  --primary: #0D9488;
+  --secondary: #14B8A6;
+  --background: #F8FAFC;
+  --card-bg: #FFFFFF;
+  --text: #1E293B;
+  --accent: #2DD4BF;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
+}
+
+[data-theme="dark"] {
+  --primary: #6D28D9;
+  --secondary: #8B5CF6;
+  --background: #0F172A;
+  --card-bg: #1E293B;
+  --text: #E2E8F0;
+  --accent: #A78BFA;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+}
+
+/* Common component styles */
+button, .button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow);
+}
+
+button:hover {
+  background-color: var(--secondary);
+  transform: translateY(-2px);
+}
+
+.section-title {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  color: var(--text);
+  opacity: 0.8;
+}

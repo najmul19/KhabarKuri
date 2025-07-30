@@ -1,8 +1,8 @@
 // NavBar.js
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
-import { FaCartPlus, FaSun, FaMoon } from "react-icons/fa";
+import { FaCartPlus, FaSun, FaMoon, FaUser } from "react-icons/fa";
 import useCart from "../../../Hooks/useCart";
 import useAdmin from "../../../Hooks/useAdmin";
 import { useTheme } from "../../../Hooks/ThemeContext/ThemeContext";
@@ -13,6 +13,7 @@ const NavBar = () => {
   const [isAdmin] = useAdmin();
   const [cart] = useCart();
   const { theme, toggleTheme } = useTheme();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogOut = () => {
     logOut()
@@ -24,30 +25,34 @@ const NavBar = () => {
       });
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   const Links = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>Home</Link>
       </li>
       <li>
-        <Link to="/menu">Our Menu</Link>
+        <Link to="/menu" className="nav-link" onClick={() => setIsMenuOpen(false)}>Our Menu</Link>
       </li>
       <li>
-        <Link to="/order/salad">Order Food</Link>
+        <Link to="/order/salad" className="nav-link" onClick={() => setIsMenuOpen(false)}>Order Food</Link>
       </li>
       {user && isAdmin && (
         <li>
-          <Link to="/dashboard/adminHome">Dashboard</Link>
+          <Link to="/dashboard/adminHome" className="nav-link" onClick={() => setIsMenuOpen(false)}>Dashboard</Link>
         </li>
       )}
       {user && !isAdmin && (
         <li>
-          <Link to="/dashboard/userHome">Dashboard</Link>
+          <Link to="/dashboard/userHome" className="nav-link" onClick={() => setIsMenuOpen(false)}>Dashboard</Link>
         </li>
       )}
 
       <li>
-        <Link to={"/dashboard/cart"}>
+        <Link to={"/dashboard/cart"} className="nav-link cart-link" onClick={() => setIsMenuOpen(false)}>
           <div className="cart-indicator">
             <FaCartPlus className="cart-icon" />
             <span className="cart-badge">{cart.length}</span>
@@ -57,7 +62,12 @@ const NavBar = () => {
 
       {user ? (
         <>
-          <li>
+          <li className="user-profile">
+            {user.photoURL ? (
+              <img src={user.photoURL} alt={user.displayName} className="user-avatar" />
+            ) : (
+              <FaUser className="user-icon" />
+            )}
             <button onClick={handleLogOut} className="logout-btn">
               LogOut
             </button>
@@ -65,7 +75,7 @@ const NavBar = () => {
         </>
       ) : (
         <li>
-          <Link to="/login">Login</Link>
+          <Link to="/login" className="login-btn" onClick={() => setIsMenuOpen(false)}>Login</Link>
         </li>
       )}
     </>
@@ -80,7 +90,7 @@ const NavBar = () => {
           </Link>
         </div>
 
-        <div className="navbar-links">
+        <div className={`navbar-links ${isMenuOpen ? "active" : ""}`}>
           <ul className="nav-menu">{Links}</ul>
         </div>
 
@@ -89,8 +99,13 @@ const NavBar = () => {
             {theme === 'light' ? <FaMoon /> : <FaSun />}
           </button>
           <div className="mobile-menu-toggle">
-            <input type="checkbox" id="menu-toggle" />
-            <label htmlFor="menu-toggle">
+            <input 
+              type="checkbox" 
+              id="menu-toggle" 
+              checked={isMenuOpen}
+              onChange={toggleMenu}
+            />
+            <label htmlFor="menu-toggle" className="hamburger">
               <span></span>
               <span></span>
               <span></span>

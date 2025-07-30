@@ -9,6 +9,7 @@ import souptImg from "../../../assets/menu/soup-bg.jpg";
 import useMenu from "../../../Hooks/useMenu";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import MenuCategory from "../MenuCategory/MenuCategory";
+import "./MenuPage.css";
 
 const Menu = () => {
   const [menu] = useMenu();
@@ -17,37 +18,56 @@ const Menu = () => {
   const salad = menu.filter((item) => item.category == "salad");
   const pizza = menu.filter((item) => item.category == "pizza");
   const offered = menu.filter((item) => item.category == "offered");
+
   return (
-    <div>
+    <div className="menu-page">
       <Helmet>
         <title>KhabarKuri | Menu</title>
       </Helmet>
 
-      {/* main cover */}
-      <Cover img={menuImg} title="Our Menu"></Cover>
-      <SectionTitle
-        subHeading="Don't Miss "
-        heading="Todays Offer"
-      ></SectionTitle>
-      {/* offered menu items */}
-      <MenuCategory items={offered}></MenuCategory>
-      {/* dessert menu items */}
-      <MenuCategory
-        items={dessert}
-        title={"dessert"}
-        img={dessertImg}
-      ></MenuCategory>
-      <MenuCategory
-        items={pizza}
-        title={"pizza"}
-        img={pizzatImg}
-      ></MenuCategory>
-      <MenuCategory
-        items={salad}
-        title={"salad"}
-        img={saladtImg}
-      ></MenuCategory>
-      <MenuCategory items={soup} title={"soup"} img={souptImg}></MenuCategory>
+      {/* Main Cover */}
+      <Cover 
+        img={menuImg} 
+        title="Our Menu"
+        description="Explore our delicious offerings"
+      />
+
+      {/* Today's Offer Section */}
+      <section className="today-offer-section">
+        <SectionTitle
+          subHeading="Don't Miss"
+          heading="Today's Offer"
+        />
+        <MenuCategory items={offered} />
+      </section>
+
+      {/* Menu Categories */}
+      <div className="menu-categories-container">
+        <MenuCategory
+          items={dessert}
+          title="Dessert"
+          img={dessertImg}
+          description="Sweet endings to perfect your meal"
+        />
+        <MenuCategory
+          items={pizza}
+          title="Pizza"
+          img={pizzatImg}
+          description="Authentic flavors with every slice"
+        />
+        <MenuCategory
+          items={salad}
+          title="Salad"
+          img={saladtImg}
+          description="Fresh and healthy choices"
+        />
+        <MenuCategory
+          items={soup}
+          title="Soup"
+          img={souptImg}
+          description="Comfort in every bowl"
+        />
+      </div>
     </div>
   );
 };

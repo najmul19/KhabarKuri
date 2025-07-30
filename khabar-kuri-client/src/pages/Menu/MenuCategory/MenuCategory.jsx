@@ -1,22 +1,41 @@
 import { Link } from "react-router-dom";
 import Cover from "../../Shared/Cover/Cover";
 import MenuItem from "../../Shared/MenuItem/MenuItem";
+import "./menuCat.css";
 
-const MenuCategory = ({ items, title, img }) => {
+const MenuCategory = ({ items, title, img, description }) => {
   return (
-    <div className="pt-8">
-      {title && <Cover img={img} title={title}></Cover>}
-      <div className="grid md:grid-cols-2 gap-10 mt-16">
-        {items.map((item) => (
-          <MenuItem key={item._id} item={item}></MenuItem>
-        ))}
+    <section className={`glass-menu-category ${title ? 'with-cover' : ''}`}>
+      {title && (
+        <Cover 
+          img={img} 
+          title={title}
+          description={description}
+          glassStyle={true}
+        />
+      )}
+      
+      <div className="glass-items-container">
+        <div className="glass-items-grid">
+          {items.map((item, index) => (
+            <MenuItem 
+              key={item._id} 
+              item={item}
+              animationDelay={index * 0.1}
+            />
+          ))}
+        </div>
+        
+        {title && (
+          <div className="glass-view-all">
+            <Link to={`/order/${title}`} className="glass-view-link">
+              <span>Explore All {title}</span>
+              <div className="glass-view-arrow">→</div>
+            </Link>
+          </div>
+        )}
       </div>
-      <Link to={`/order/${title}`}>
-        <button className="btn btn-outline uppercase border-0 border-b-4">
-          Order Now
-        </button>
-      </Link>
-    </div>
+    </section>
   );
 };
 

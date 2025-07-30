@@ -1,0 +1,168 @@
+/* Modified CSS for consistent card growth */
+.glass-food-card {
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* Ensure card takes full height */
+}
+
+.glass-food-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-height: 200px;
+}
+
+.glass-food-content {
+ 
+  transition: all 0.4s ease;
+  transform: translateZ(0);
+
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.glass-food-actions {
+    display: flex;
+    transform-style: preserve-3d;
+    padding: 0 1.5rem 1.5rem;
+    /* Match side padding with content */
+    margin-top: auto;
+    /* Push button to bottom */
+}
+
+/* Keep all other existing styles the same */
+.glass-food-media {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    transform-style: preserve-3d;
+}
+
+.glass-food-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform-origin: center center;
+}
+
+.glass-food-price {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(109, 40, 217, 0.8);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 2;
+    transition: all 0.4s ease;
+    transform: translateZ(0);
+}
+
+.glass-food-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.4s ease;
+    transform: translateZ(0);
+}
+
+.glass-food-recipe {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.glass-food-add-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform: translateZ(0);
+    width: 100%;
+}
+
+/* Hover effects remain the same */
+.glass-food-card:hover {
+    /* transform: translateY(-10px) rotateX(5deg) rotateY(2deg) scale(1.03); */
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.4),
+        0 5px 15px var(--primary);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.glass-food-card:hover .glass-food-image {
+    transform: scale(1.15) rotate(1deg);
+    filter: brightness(1.1) contrast(1.1);
+}
+
+.glass-food-card:hover .glass-food-price {
+    transform: translateZ(20px) scale(1.1);
+    box-shadow: 0 0 20px rgba(109, 40, 217, 0.5);
+}
+
+.glass-food-card:hover .glass-food-content {
+    background: rgba(30, 41, 59, 0.8);
+    transform: translateZ(10px);
+}
+
+.glass-food-card:hover .glass-food-name {
+    color: var(--primary);
+    letter-spacing: 1px;
+    transform: translateZ(15px);
+}
+
+.glass-food-card:hover .glass-food-add-btn {
+    transform: translateZ(20px) translateY(-5px);
+    box-shadow: 0 10px 20px rgba(109, 40, 217, 0.3);
+}
+
+.glass-food-add-btn:hover {
+    background: var(--secondary);
+    transform: translateZ(30px) translateY(-7px) !important;
+}
+
+@media (max-width: 768px) {
+    .glass-food-card:hover {
+        transform: translateY(-5px) !important;
+    }
+
+    .glass-food-media {
+        height: 180px;
+    }
+
+    .glass-food-name {
+        font-size: 1.1rem;
+    }
+
+    .glass-food-recipe {
+        font-size: 0.85rem;
+    }
+}

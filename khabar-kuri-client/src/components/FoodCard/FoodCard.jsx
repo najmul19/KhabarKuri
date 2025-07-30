@@ -3,6 +3,8 @@ import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useCart from "../../Hooks/useCart";
+import "./foodCard.css";
+
 const FoodCard = ({ item }) => {
   const { name, image, price, recipe, _id: menuId } = item;
   const location = useLocation();
@@ -10,10 +12,9 @@ const FoodCard = ({ item }) => {
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
   const [, refetch] = useCart();
+
   const handleAddToCart = () => {
-    // console.log(food)
     if (user && user.email) {
-      // send cart item to the db
       const cartItem = {
         menuId,
         email: user.email,
@@ -21,8 +22,8 @@ const FoodCard = ({ item }) => {
         image,
         price,
       };
+      
       axiosSecure.post("/carts", cartItem).then((res) => {
-        console.log(res.data);
         if (res.data.insertedId) {
           Swal.fire({
             position: "top-end",
@@ -30,54 +31,51 @@ const FoodCard = ({ item }) => {
             title: `${name} added to cart!`,
             showConfirmButton: false,
             timer: 1500,
+            background: 'var(--card-bg)',
+            color: 'var(--text)',
           });
-          // refecth the cart to updated the cart items count
           refetch();
         }
       });
-      // fetch("http://localhost:5000/carts", {
-      //   method: "POST",
-      //   headers: {
-      //     "content-type": "application/json",
-      //   },
-      //   body: JSON.stringify(cartItem),
-      // }).then((res) => res.json())
-      // .then(data=>{
-      //   console.log(data);
-      // })
     } else {
       Swal.fire({
         title: "You are not Logged In",
         text: "Please login to add to the cart",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
+        confirmButtonColor: "var(--primary)",
+        cancelButtonColor: "var(--secondary)",
         confirmButtonText: "Yes, login!",
+        background: 'var(--card-bg)',
+        color: 'var(--text)',
       }).then((result) => {
         if (result.isConfirmed) {
-          // send user to the login page
           navigate("/login", { state: { from: location } });
         }
       });
     }
   };
+
   return (
-    <div className="card bg-base-100 w-96 shadow-xl">
-      <figure>
-        <img src={image} alt="Shoes" />
-      </figure>
-      <p className=" absolute right-0 mr-4 mt-4  px-4 bg-slate-900 text-white ">
-        ${price}
-      </p>
-      <div className="card-body flex flex-col items-center text-center ">
-        <h2 className="card-title">{name}</h2>
-        <p>{recipe}</p>
-        <div className="card-actions justify-end">
+    <div className="glass-food-card">
+      <div className="glass-food-media">
+        <img src={image} alt={name} className="glass-food-image" />
+        <div className="glass-food-price">${price}</div>
+      </div>
+      
+      <div className="glass-food-content">
+        <h3 className="glass-food-name">{name}</h3>
+        <p className="glass-food-recipe">{recipe}</p>
+        
+        <div className="glass-food-actions">
           <button
             onClick={handleAddToCart}
-            className="btn btn-outline uppercase bg-slate-100 border-0 border-b-4 border-orange-300 hover:bg-gray-700 hover:text-white"
+            className="glass-food-add-btn"
           >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M12 6V12M12 12V18M12 12H18M12 12H6" 
+                stroke="currentColor" strokeWidth="2"/>
+            </svg>
             Add To Cart
           </button>
         </div>
