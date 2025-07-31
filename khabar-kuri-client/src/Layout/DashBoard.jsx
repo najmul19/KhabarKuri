@@ -99,9 +99,12 @@ const DashBoard = () => {
                   <NavItem to="/dashboard/review" icon={<FaAd />} colors={colors}>
                     Review
                   </NavItem>
-                  {/* <NavItem to="/dashboard/userPaymentHistory" icon={<FaList />} colors={colors}>
-                    Order History
-                  </NavItem> */}
+                  <NavItem to="/dashboard/bookings" icon={<FaList />} colors={colors}>
+                    Add Bookings
+                  </NavItem>
+                  <NavItem to="/dashboard/myBookings" icon={<FaList />} colors={colors}>
+                    My Bookings
+                  </NavItem>
                 </>
               )}
             </ul>

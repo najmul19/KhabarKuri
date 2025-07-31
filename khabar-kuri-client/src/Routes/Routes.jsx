@@ -19,6 +19,9 @@ import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import Review from "../pages/Dashboard/Review/Review";
+import ManageBookings from "../pages/Dashboard/ManageBookings/ManageBookings";
+import BookingForm from "../pages/Dashboard/BookingForm/BookingForm";
+import MyBookings from "../pages/Dashboard/MyBookings/MyBookings";
 
 export const router = createBrowserRouter([
   {
@@ -78,7 +81,16 @@ export const router = createBrowserRouter([
       {
         path: "paymentHistory",
         element: <PaymentHistory></PaymentHistory>,
-      },{
+      },
+      {
+        path: "bookings",
+        element: <BookingForm></BookingForm>,
+      },
+      {
+        path: "myBookings",
+        element: <MyBookings></MyBookings>,
+      },
+      {
         path: "review",
         element: <Review></Review>,
       },
@@ -89,6 +101,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manageBookings",
+        element: (
+          <AdminRoute>
+            <ManageBookings></ManageBookings>
           </AdminRoute>
         ),
       },
@@ -133,6 +153,14 @@ export const router = createBrowserRouter([
           </AdminRoute>
         ),
       },
+      // {
+      //   path: "manageBookings",
+      //   element: (
+      //     <AdminRoute>
+      //       <ManageBookings></ManageBookings>
+      //     </AdminRoute>
+      //   ),
+      // },
     ],
   },
 ]);

@@ -1,6 +1,8 @@
 :root {
   /* Light Theme (Teal) */
+ 
   --primary: #0C6C84;
+  --deep: #0C6C84;
   --primary-light: #85C0C6;
   --primary-dark: #06414F;
   --secondary: #D5EAED;
@@ -19,6 +21,8 @@
 
 [data-theme="dark"] {
   /* Dark Theme (Glowing Purple/Rose) */
+ 
+   --deep: #1E0B36;
   --primary: #6D28D9;        /* Vibrant purple */
   --primary-light: #8B5CF6;  /* Lighter purple */
   --primary-dark: #4C1D95;   /* Deep purple */
