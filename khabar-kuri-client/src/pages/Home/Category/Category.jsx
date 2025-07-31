@@ -14,10 +14,18 @@ import "./category.css";
 const Category = () => {
   return (
     <section className="category-section">
-      <SectionTitle
+      {/* <SectionTitle
         heading={"Order Online"}
         subHeading={"From 11.00am to 10.00pm"}
-      />
+      /> */}
+      <div className="glass-header-wrapper">
+        <SectionTitle
+          heading="Order Online"
+          subHeading="From 11.00am to 10.00pm"
+          glassStyle={true}
+        />
+        
+      </div>
 
       <div className="category-slider-container">
         <Swiper

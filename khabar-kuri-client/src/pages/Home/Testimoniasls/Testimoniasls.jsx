@@ -21,10 +21,13 @@ const Testimonials = () => {
 
   return (
     <section className="testimonials-section">
+      <div className="glass-header-wrapper">
+
       <SectionTitle
         subHeading="What Our Clients Say"
         heading="Testimonials"
       />
+      </div>
       
       <div className="testimonials-container">
         <Swiper

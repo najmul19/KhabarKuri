@@ -9,10 +9,10 @@ const PopularMenu = () => {
   
   return (
     <section className="glass-popular-section">
-      {/* Matching Background Elements */}
+   
       <div className="glass-bg-gradient"></div>
       
-      {/* Consistent Header */}
+  
       <div className="glass-header-wrapper">
         <SectionTitle
           heading="Popular Delicacies"

@@ -34,10 +34,13 @@ const Menu = () => {
 
       {/* Today's Offer Section */}
       <section className="today-offer-section">
+        <div className="glass-header-wrapper">
         <SectionTitle
           subHeading="Don't Miss"
           heading="Today's Offer"
         />
+
+        </div>
         <MenuCategory items={offered} />
       </section>
 

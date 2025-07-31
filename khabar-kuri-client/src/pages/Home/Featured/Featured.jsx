@@ -6,7 +6,10 @@ import "./Feature.css";
 const Featured = () => {
   return (
     <div className="featured-section featured-item bg-fixed">
+      <div className="glass-header-wrapper">
+
       <SectionTitle heading="Featured Item" subHeading="Check It Out" />
+      </div>
       
       <div className="featured-container">
         <div className="featured-image">
