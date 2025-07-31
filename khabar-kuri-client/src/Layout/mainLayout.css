@@ -1,56 +1,199 @@
 :root {
-  /* Light mode defaults */
-  --primary: #0D9488;
-  --secondary: #14B8A6;
+  /* Light Theme (Teal) */
+  --primary: #0C6C84;
+  --primary-light: #85C0C6;
+  --primary-dark: #06414F;
+  --secondary: #D5EAED;
   --background: #F8FAFC;
   --card-bg: #FFFFFF;
-  --text: #1E293B;
-  --accent: #2DD4BF;
+  --text: #06242C;
+  --text-muted: #64748B;
+  --border: #E2E8F0;
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --border-radius: 12px;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --glow-effect: 0 0 0 rgba(0, 0, 0, 0); /* No glow in light mode */
 }
 
 [data-theme="dark"] {
-  --primary: #6D28D9;
-  --secondary: #8B5CF6;
-  --background: #0F172A;
-  --card-bg: #1E293B;
-  --text: #E2E8F0;
-  --accent: #A78BFA;
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  /* Dark Theme (Glowing Purple/Rose) */
+  --primary: #6D28D9;        /* Vibrant purple */
+  --primary-light: #8B5CF6;  /* Lighter purple */
+  --primary-dark: #4C1D95;   /* Deep purple */
+  --secondary: #F0ABFC;      /* Rose glow */
+  --background: #0F0A1A;     /* Dark space */
+  --card-bg: #1E0B36;       /* Rich purple-black */
+  --text: #E9D5FF;          /* Soft purple-white */
+  --text-muted: #A78BFA;     /* Muted purple */
+  --border: #4C1D95;        /* Purple border */
+  --shadow: 0 4px 15px rgba(107, 33, 168, 0.3);
+  --glow-effect: 0 0 15px rgba(240, 171, 252, 0.5); /* Rose glow */
+  --success: #6EE7B7;
+  --warning: #FCD34D;
+  --error: #FCA5A5;
 }
 
+/* Base Styles */
 body {
   background-color: var(--background);
   color: var(--text);
   font-family: 'Inter', sans-serif;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  line-height: 1.6;
 }
 
-/* Common component styles */
-button, .button {
-  background-color: var(--primary);
+/* Glowing Elements */
+.glow {
+  box-shadow: var(--glow-effect);
+  transition: box-shadow 0.3s ease;
+}
+
+.glow:hover {
+  box-shadow: 0 0 20px rgba(240, 171, 252, 0.7);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.section-title {
+  color: var(--primary-light);
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 3px;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* Buttons */
+.btn {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: white;
   border: none;
   padding: 12px 24px;
   border-radius: var(--border-radius);
-  cursor: pointer;
   font-weight: 600;
-  transition: all 0.2s ease;
+  cursor: pointer;
+  transition: all 0.3s ease;
   box-shadow: var(--shadow);
 }
 
-button:hover {
-  background-color: var(--secondary);
+.btn:hover {
   transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
 }
 
-.section-title {
-  color: var(--primary);
-  margin-bottom: 1rem;
+.btn-glow {
+  box-shadow: var(--glow-effect);
 }
 
-.section-subtitle {
+.btn-glow:hover {
+  box-shadow: 0 0 20px rgba(240, 171, 252, 0.7);
+}
+
+/* Cards */
+.card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .card:hover {
+  box-shadow: 0 10px 25px rgba(107, 33, 168, 0.4);
+}
+
+/* Forms */
+input, textarea, select {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
   color: var(--text);
-  opacity: 0.8;
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(107, 33, 168, 0.2);
+}
+
+/* Utility Classes */
+.text-primary {
+  color: var(--primary);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px var(--secondary);
+}
+
+.bg-gradient {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light);
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 rgba(240, 171, 252, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(240, 171, 252, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(240, 171, 252, 0); }
+}
+
+.pulse {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Dashboard Specific Overrides */
+.dashboard-sidebar {
+  background: linear-gradient(180deg, var(--primary-dark), var(--primary));
+}
+
+.active-nav-link {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--secondary) !important;
+  box-shadow: var(--glow-effect);
 }

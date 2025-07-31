@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import "./UserHome.css"
 import {
   FaWallet,
   FaHistory,
@@ -144,57 +145,57 @@ const UserHome = () => {
 
       {/* Stats Cards */}
       <div className="stats-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <div className="stat-card bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md flex items-center transition-transform hover:scale-105">
+        <div className="stat-card bg-white  p-4 rounded-lg shadow-md flex items-center transition-transform hover:scale-105">
           <div className="stat-icon bg-[#0C6C84] w-12 h-12 rounded-full flex items-center justify-center text-white mr-4">
             <FaWallet className="text-xl" />
           </div>
           <div className="stat-content">
-            <h3 className="text-sm text-gray-600 dark:text-gray-300">
+            <h3 className="text-sm text-gray-600">
               Total Spent
             </h3>
-            <p className="text-xl font-bold dark:text-white">
+            <p className="text-xl font-bold ">
               ${stats?.totalSpent.toFixed(2) || "0.00"}
             </p>
           </div>
         </div>
 
-        <div className="stat-card bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md flex items-center transition-transform hover:scale-105">
-          <div className="stat-icon bg-[#85C0C6] w-12 h-12 rounded-full flex items-center justify-center text-white mr-4">
+        <div className="stat-card bg-white  p-4 rounded-lg shadow-md flex items-center transition-transform hover:scale-105">
+          <div className="stat-icon bg-[#0C6C84] w-12 h-12 rounded-full flex items-center justify-center text-white mr-4">
             <FaHistory className="text-xl" />
           </div>
           <div className="stat-content">
-            <h3 className="text-sm text-gray-600 dark:text-gray-300">
+            <h3 className="text-sm text-gray-600">
               Total Orders
             </h3>
-            <p className="text-xl font-bold dark:text-white">
+            <p className="text-xl font-bold ">
               {stats?.totalOrders || 0}
             </p>
           </div>
         </div>
 
-        <div className="stat-card bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md flex items-center transition-transform hover:scale-105">
+        <div className="stat-card bg-white  p-4 rounded-lg shadow-md flex items-center transition-transform hover:scale-105">
           <div className="stat-icon bg-[#06414F] w-12 h-12 rounded-full flex items-center justify-center text-white mr-4">
             <FaChartLine className="text-xl" />
           </div>
           <div className="stat-content">
-            <h3 className="text-sm text-gray-600 dark:text-gray-300">
+            <h3 className="text-sm text-gray-600 ">
               Monthly Avg.
             </h3>
-            <p className="text-xl font-bold dark:text-white">
+            <p className="text-xl font-bold ">
               ${stats?.monthlyAverage.toFixed(2) || "0.00"}
             </p>
           </div>
         </div>
 
-        <div className="stat-card bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md flex items-center transition-transform hover:scale-105">
-          <div className="stat-icon bg-[#D5EAED] w-12 h-12 rounded-full flex items-center justify-center text-[#06414F] mr-4">
+        <div className="stat-card bg-white p-4 rounded-lg shadow-md flex items-center transition-transform hover:scale-105">
+          <div className="stat-icon bg-[#0C6C84] w-12 h-12 rounded-full flex items-center justify-center text-[#06414F] mr-4">
             <FaStar className="text-xl" />
           </div>
           <div className="stat-content">
-            <h3 className="text-sm text-gray-600 dark:text-gray-300">
+            <h3 className="text-sm text-gray-600 ">
               Favorite Item
             </h3>
-            <p className="text-xl font-bold dark:text-white">
+            <p className="text-xl font-bold ">
               {stats?.favoriteItem || "None"}
             </p>
           </div>
@@ -203,8 +204,8 @@ const UserHome = () => {
 
       {/* Charts Section */}
       <div className="charts-section grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <div className="chart-container bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">
-          <h3 className="chart-title text-lg font-semibold mb-4 dark:text-white">
+        <div className="chart-container bg-white  p-4 rounded-lg shadow-md">
+          <h3 className="chart-title text-lg font-semibold mb-4 ">
             Monthly Spending
           </h3>
           <div className="h-64">
@@ -226,8 +227,8 @@ const UserHome = () => {
           </div>
         </div>
 
-        <div className="chart-container bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">
-          <h3 className="chart-title text-lg font-semibold mb-4 dark:text-white">
+        <div className="chart-container bg-white  p-4 rounded-lg shadow-md">
+          <h3 className="chart-title text-lg font-semibold mb-4 ">
             Spending by Category
           </h3>
           <div className="h-64">
@@ -262,12 +263,12 @@ const UserHome = () => {
       </div>
 
       {/* Payment History */}
-      <div className="payment-history bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+      <div className="payment-history bg-white p-6 rounded-lg shadow-md">
         <h3 className="section-title text-xl font-semibold mb-6 dark:text-white">
           Recent Transactions
         </h3>
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+          <table className="min-w-full divide-y divide-gray-200 ">
             <thead className="bg-gray-50 dark:bg-gray-700">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
@@ -284,7 +285,7 @@ const UserHome = () => {
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+            <tbody className=" divide-y ">
               {
                 // paymentHistory.slice(0, 5).map((payment) =>
                 // Sort payments by date (newest first) before slicing

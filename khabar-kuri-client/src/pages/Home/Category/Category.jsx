@@ -1,6 +1,7 @@
 // Category.js
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
+import { Link } from "react-router-dom"; // 🔼 Add this at the top
 import "swiper/css";
 import "swiper/css/pagination";
 import slide1 from "../../../assets/home/slide1.jpg";
@@ -43,34 +44,34 @@ const Category = () => {
           className="category-swiper"
         >
           <SwiperSlide>
-            <div className="slide-content">
+            <Link to="/order/salad" className="slide-content">
               <img src={slide1} alt="Salad" className="slide-image" />
               <h3 className="slide-title">Salad</h3>
-            </div>
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="slide-content">
+            <Link to="/order/pizza" className="slide-content">
               <img src={slide2} alt="Pizza" className="slide-image" />
               <h3 className="slide-title">Pizza</h3>
-            </div>
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="slide-content">
+            <Link to="/order/soup" className="slide-content">
               <img src={slide3} alt="Soups" className="slide-image" />
               <h3 className="slide-title">Soups</h3>
-            </div>
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="slide-content">
+            <Link to="/order/dessert" className="slide-content">
               <img src={slide4} alt="Desserts" className="slide-image" />
               <h3 className="slide-title">Desserts</h3>
-            </div>
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="slide-content">
+            <Link to="/order/salad" className="slide-content">
               <img src={slide5} alt="Salad" className="slide-image" />
               <h3 className="slide-title">Salad</h3>
-            </div>
+            </Link>
           </SwiperSlide>
         </Swiper>
       </div>

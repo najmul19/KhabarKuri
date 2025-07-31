@@ -1,0 +1,213 @@
+/* Base styles */
+.user-dashboard .review-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: var(--text);
+  background-color: var(--bg-dark);
+}
+
+/* Review form */
+.user-dashboard .review-form {
+  background-color: var(--bg-light);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+
+.user-dashboard .review-title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Review type selector */
+.user-dashboard .review-type-selector {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.user-dashboard .review-type-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+[data-theme="light"] .user-dashboard .review-type-btn {
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+[data-theme="light"] .user-dashboard .review-type-btn.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+[data-theme="dark"] .user-dashboard .review-type-btn {
+  background-color: var(--primary-dark);
+  color: var(--text);
+}
+
+[data-theme="dark"] .user-dashboard .review-type-btn.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Star rating */
+.user-dashboard .star-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.user-dashboard .star-btn {
+  font-size: 1.75rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--border);
+}
+
+.user-dashboard .star-btn.active {
+  color: var(--accent);
+}
+
+.user-dashboard .rating-emoji {
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user-dashboard .rating-text {
+  color: var(--text-muted);
+}
+
+/* Review textarea */
+.user-dashboard .review-textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background-color: var(--bg-light);
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  min-height: 150px;
+  resize: vertical;
+}
+
+.user-dashboard .review-textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.2);
+}
+
+/* Submit button */
+.user-dashboard .submit-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.user-dashboard .submit-btn:disabled {
+  background: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.user-dashboard .submit-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+}
+
+/* Previous reviews */
+.user-dashboard .previous-reviews {
+  background-color: var(--bg-light);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.user-dashboard .reviews-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.user-dashboard .review-item {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background-color: var(--bg-light);
+  margin-bottom: 1rem;
+}
+
+.user-dashboard .review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.user-dashboard .review-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-dashboard .user-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.user-dashboard .user-name {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.user-dashboard .review-meta {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.user-dashboard .review-content {
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.user-dashboard .empty-reviews {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.user-dashboard .fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}

@@ -12,111 +12,157 @@ import {
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../Hooks/useCart";
 import useAdmin from "../Hooks/useAdmin";
+import { useTheme } from "../Hooks/ThemeContext/ThemeContext";
+import { motion } from "framer-motion";
 
 const DashBoard = () => {
   const [cart] = useCart();
-  // TODO: get isAdmin value from the databse
-  // const isAdmin = true;
-  const [isAdmin] = useAdmin();//5/15/2025
+  const [isAdmin] = useAdmin();
+  const { theme } = useTheme();
+
+  // Glowing purple/rose theme colors
+  const themeColors = {
+    light: {
+      sidebarBg: "#0C6C84", // Teal
+      sidebarText: "#ffffff",
+      activeLinkBg: "rgba(255, 255, 255, 0.2)",
+      activeLinkText: "#ffffff",
+      activeLinkGlow: "0 0 10px rgba(255, 255, 255, 0.5)",
+      divider: "rgba(255,255,255,0.2)",
+      contentBg: "#f8fafc",
+      badgeBg: "rgba(255, 255, 255, 0.3)"
+    },
+    dark: {
+      sidebarBg: "#1E0B36", // Deep purple
+      sidebarText: "#E9D5FF",
+      activeLinkBg: "rgba(168, 85, 247, 0.2)", // Purple-500 with opacity
+      activeLinkText: "#F0ABFC", // Rose glow
+      activeLinkGlow: "0 0 15px rgba(240, 171, 252, 0.7)", // Rose glow
+      divider: "rgba(233, 213, 255, 0.1)",
+      contentBg: "#0F0A1A",
+      badgeBg: "rgba(168, 85, 247, 0.3)"
+    }
+  };
+
+  const colors = themeColors[theme];
+
   return (
-    <div className="flex">
-      {/* dahsboard sidebar */}
-      <div className="w-56 min-h-screen bg-orange-400">
-        <ul className="menu">
-          {isAdmin ? (
-            <>
-              <li>
-                <NavLink to="/dashboard/adminHome">
-                  <FaHome className=""></FaHome>
-                  Admin Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/addItems">
-                  <FaUtensils className=""></FaUtensils>
-                  Add Items
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/manageItems">
-                  <FaList className=""></FaList>
-                  Manage Items
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/manageBookings">
-                  <FaAd className=""></FaAd>
-                  Manage Bookings
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/allUsers">
-                  <FaUsers className=""></FaUsers>
-                  All Users
-                </NavLink>
-              </li>
-            </>
-          ) : (
-            <>
-              <li>
-                <NavLink to="/dashboard/userHome">
-                  <FaHome className=""></FaHome>
-                  User Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/paymentHistory">
-                  <FaCalendar className=""></FaCalendar>
-                  Payment History
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/cart">
-                  <FaShoppingCart className=""></FaShoppingCart>
-                  My Cart: ({cart.length})
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/review">
-                  <FaAd className=""></FaAd>
-                  Review
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/userPaymentHistory">
-                  <FaList className=""></FaList>
-                 User Payment History
-                </NavLink>
-              </li>
-            </>
-          )}
-          {/* shared navlinks */}
-          <div className="divider"></div>
-          <li>
-            <NavLink to="/">
-              <FaHome className=""></FaHome>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/order/salad">
-              <FaSearch className=""></FaSearch>
-              Menu
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/order/contact">
-              <FaEnvelope></FaEnvelope>
-              Contact
-            </NavLink>
-          </li>
-        </ul>
-      </div>
-      {/* dahsboard content */}
-      <div className="flex-1 p-8 w-full">
-        <Outlet></Outlet>
+    <div className="flex h-screen overflow-hidden">
+      {/* Fixed Full-height Sidebar */}
+      <motion.div 
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        className="w-64 h-screen fixed flex flex-col"
+        style={{ 
+          backgroundColor: colors.sidebarBg,
+          boxShadow: "4px 0 15px rgba(0, 0, 0, 0.2)"
+        }}
+      >
+        <div className="p-4 flex flex-col h-full">
+          <h2 className="text-2xl font-bold mb-8 px-4" style={{ color: colors.sidebarText }}>
+            {isAdmin ? "Admin Panel" : "My Dashboard"}
+          </h2>
+          
+          {/* Scrollable Menu Area */}
+          <div className="flex-1 overflow-y-auto custom-scrollbar">
+            <ul className="menu space-y-1">
+              {isAdmin ? (
+                <>
+                  <NavItem to="/dashboard/adminHome" icon={<FaHome />} colors={colors}>
+                    Admin Home
+                  </NavItem>
+                  <NavItem to="/dashboard/addItems" icon={<FaUtensils />} colors={colors}>
+                    Add Items
+                  </NavItem>
+                  <NavItem to="/dashboard/manageItems" icon={<FaList />} colors={colors}>
+                    Manage Items
+                  </NavItem>
+                  <NavItem to="/dashboard/manageBookings" icon={<FaAd />} colors={colors}>
+                    Manage Bookings
+                  </NavItem>
+                  <NavItem to="/dashboard/allUsers" icon={<FaUsers />} colors={colors}>
+                    All Users
+                  </NavItem>
+                </>
+              ) : (
+                <>
+                  <NavItem to="/dashboard/userHome" icon={<FaHome />} colors={colors}>
+                    User Home
+                  </NavItem>
+                  <NavItem to="/dashboard/paymentHistory" icon={<FaCalendar />} colors={colors}>
+                    Payment History
+                  </NavItem>
+                  <NavItem to="/dashboard/cart" icon={<FaShoppingCart />} colors={colors}>
+                    My Cart <span className="badge" style={{ backgroundColor: colors.badgeBg }}>{cart.length}</span>
+                  </NavItem>
+                  <NavItem to="/dashboard/review" icon={<FaAd />} colors={colors}>
+                    Review
+                  </NavItem>
+                  {/* <NavItem to="/dashboard/userPaymentHistory" icon={<FaList />} colors={colors}>
+                    Order History
+                  </NavItem> */}
+                </>
+              )}
+            </ul>
+          </div>
+
+          {/* Fixed Bottom Navigation */}
+          <div className="mt-auto pt-4 border-t" style={{ borderColor: colors.divider }}>
+            <ul className="menu space-y-1">
+              <NavItem to="/" icon={<FaHome />} colors={colors}>
+                Home
+              </NavItem>
+              <NavItem to="/order/salad" icon={<FaSearch />} colors={colors}>
+                Menu
+              </NavItem>
+              <NavItem to="/order/contact" icon={<FaEnvelope />} colors={colors}>
+                Contact
+              </NavItem>
+            </ul>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Content Area */}
+      <div 
+        className="flex-1 overflow-y-auto ml-64"
+        style={{ backgroundColor: colors.contentBg }}
+      >
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="p-6 md:p-8 min-h-full"
+        >
+          <Outlet />
+        </motion.div>
       </div>
     </div>
+  );
+};
+
+// Custom NavItem Component with Glow Effect
+const NavItem = ({ to, icon, colors, children }) => {
+  return (
+    <li>
+      <NavLink
+        to={to}
+        className={({ isActive }) => 
+          `flex items-center px-4 py-3 rounded-lg mx-2 transition-all ${
+            isActive ? 'font-medium' : 'opacity-80 hover:opacity-100'
+          }`
+        }
+        style={({ isActive }) => ({
+          color: isActive ? colors.activeLinkText : colors.sidebarText,
+          backgroundColor: isActive ? colors.activeLinkBg : 'transparent',
+          boxShadow: isActive ? colors.activeLinkGlow : 'none'
+        })}
+      >
+        <span className="text-lg mr-3">{icon}</span>
+        <span className="flex-1">{children}</span>
+      </NavLink>
+    </li>
   );
 };
 
