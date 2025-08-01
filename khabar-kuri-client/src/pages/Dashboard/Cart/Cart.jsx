@@ -28,7 +28,7 @@ const Cart = () => {
       confirmButtonColor: "var(--primary)",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, remove it!",
-      background: 'var(--bg-light)',
+      background: 'var(--deep)',
       color: 'var(--text)',
     }).then((result) => {
       if (result.isConfirmed) {
@@ -40,7 +40,7 @@ const Cart = () => {
               text: "Item has been removed from your cart.",
               icon: "success",
               confirmButtonColor: "var(--primary)",
-              background: 'var(--bg-light)',
+              background: 'var(--deep)',
               color: 'var(--text)',
             });
           }

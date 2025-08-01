@@ -122,13 +122,14 @@ const CheckOutForm = () => {
           style: {
             base: {
               fontSize: "16px",
-              color: "#4242770",
+              color: "#114219",
+              
               "::placeholder": {
-                color: "#aab7c4",
+                color: "var(--text)",
               },
             },
             invalid: {
-              color: "#9e2146",
+              color: "var(--text)",
             },
           },
         }}
