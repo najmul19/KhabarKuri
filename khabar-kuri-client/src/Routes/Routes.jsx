@@ -22,6 +22,8 @@ import Review from "../pages/Dashboard/Review/Review";
 import ManageBookings from "../pages/Dashboard/ManageBookings/ManageBookings";
 import BookingForm from "../pages/Dashboard/BookingForm/BookingForm";
 import MyBookings from "../pages/Dashboard/MyBookings/MyBookings";
+import AdminOrders from "../pages/Dashboard/AdminOrders/AdminOrders";
+import NotificationBell from "../pages/Dashboard/NotificationBell/NotificationBell";
 
 export const router = createBrowserRouter([
   {
@@ -94,6 +96,10 @@ export const router = createBrowserRouter([
         path: "review",
         element: <Review></Review>,
       },
+      {
+        path: "notificationBell",
+        element: <NotificationBell></NotificationBell>,
+      },
 
       // admin routes
       {
@@ -101,6 +107,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "adminOrders",
+        element: (
+          <AdminRoute>
+            <AdminOrders></AdminOrders>
           </AdminRoute>
         ),
       },

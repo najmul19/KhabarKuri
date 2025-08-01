@@ -117,7 +117,7 @@ const ManageBookings = () => {
               "from-[var(--primary)] to-[var(--primary-dark)]"}`}>
               Manage Reservations
             </h2>
-            <p className={`text-sm ${isDark ? "text-[var(--text-muted)]" : "text-[var(--text-muted)]"}`}>
+            <p className={`text-sm ${isDark ? "text-[var(--text)]" : "text-[var(--text)]"}`}>
               {bookings.length} total bookings • {bookings.filter(b => b.status === "pending").length} pending approval
             </p>
           </div>
@@ -144,12 +144,12 @@ const ManageBookings = () => {
             <table className="w-full">
               <thead>
                 <tr className={`border-b ${isDark ? "border-[var(--border)]" : "border-[var(--border)]"}`}>
-                  <th className={`pb-4 text-left font-semibold ${isDark ? "text-[var(--secondary)]" : "text-[var(--primary-dark)]"}`}>USER</th>
-                  <th className={`pb-4 text-left font-semibold ${isDark ? "text-[var(--secondary)]" : "text-[var(--primary-dark)]"}`}>DATE</th>
-                  <th className={`pb-4 text-left font-semibold ${isDark ? "text-[var(--secondary)]" : "text-[var(--primary-dark)]"}`}>TIME</th>
-                  <th className={`pb-4 text-left font-semibold ${isDark ? "text-[var(--secondary)]" : "text-[var(--primary-dark)]"}`}>GUESTS</th>
-                  <th className={`pb-4 text-left font-semibold ${isDark ? "text-[var(--secondary)]" : "text-[var(--primary-dark)]"}`}>STATUS</th>
-                  <th className={`pb-4 text-left font-semibold ${isDark ? "text-[var(--secondary)]" : "text-[var(--primary-dark)]"}`}>ACTIONS</th>
+                  <th className={`pb-4 text-left font-semibold "text-[var(--text)]"`}>USER</th>
+                  <th className={`pb-4 text-left font-semibold"text-[var(--text)]"`}>DATE</th>
+                  <th className={`pb-4 text-left font-semibold "text-[var(--text)]"`}>TIME</th>
+                  <th className={`pb-4 text-left font-semibold "text-[var(--text)]"`}>GUESTS</th>
+                  <th className={`pb-4 text-left font-semibold "text-[var(--text)]"`}>STATUS</th>
+                  <th className={`pb-4 text-left font-semibold "text-[var(--text)]"`}>ACTIONS</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[var(--border)]">
